@@ -12,7 +12,10 @@ global.App = {
 , port:    process.env.PORT || 3000
 , root:    process.cwd()
 , require: function(path) {
-    return require(this.root + "/" + path)
+    return require(this.appPath(path))
+  }
+, appPath: function(path) {
+    return this.root + "/" + path
   }
 , env: env
 , start: function() {

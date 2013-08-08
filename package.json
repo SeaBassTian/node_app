@@ -19,7 +19,7 @@
     "supertest": "0.5.x"
   },
   "engines": {
-    "node": "0.8.x",
+    "node": "0.10.x",
     "npm": "1.2.x"
   },
   "scripts": {

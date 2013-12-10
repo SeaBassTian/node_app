@@ -10,12 +10,35 @@ global.App = {
 , config:  require("./config")[env]
 , version: packageJson.version
 , port:    process.env.PORT || 3000
-, root:    process.cwd()
+, root:    __dirname + "/.." //process.cwd()
 , require: function(path) {
     return require(this.appPath(path))
   }
 , appPath: function(path) {
     return this.root + "/" + path
+  }
+, command:   function(path) {
+    return this.require("app/commands/" + path)
+  }
+, controller:   function(path) {
+    return this.require("app/controllers/" + path + "Controller")
+  }
+, model:   function(path) {
+    return this.require("app/models/" + path)
+  }
+, presenter: function(path) {
+    return this.require("app/presenters/" + path)
+  }
+, route:   function(path) {
+    return this.require("app/routes/" + path)
+  }
+, util:   function(path) {
+    return this.require("app/utils/" + path)
+  }
+, log: function() {
+    if (process.env.V) {
+      console.log.apply(console,arguments)
+    }
   }
 , env: env
 , start: function() {
